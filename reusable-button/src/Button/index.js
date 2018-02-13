@@ -1,5 +1,6 @@
-import React, { Component, PropTypes } from "react";
+import React, { Component } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
+import PropTypes from "prop-types";
 
 import Base, { Default, Danger, Info, Success } from "./styles";
 
@@ -10,7 +11,7 @@ class Button extends Component {
     children: any,
     danger: bool,
     info: bool,
-    style: view.PropTypes.style,
+    style: View.PropTypes.style,
     success: bool,
     onPress: func
   };
@@ -19,13 +20,13 @@ class Button extends Component {
     const { danger, info, success } = this.props;
 
     if (info) {
-      return info;
+      return Info;
     }
     if (success) {
-      return success;
+      return Success;
     }
     if (danger) {
-      return danger;
+      return Danger;
     }
     return Default;
   }
