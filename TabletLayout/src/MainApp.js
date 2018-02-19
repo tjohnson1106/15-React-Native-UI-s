@@ -1,23 +1,24 @@
 import React, { Component } from "react";
-import { ListView, StyleSheet, View, Text } from "react-native";
-
-import Post from "./Post";
-import data from "./data";
-
-const ds = new ListView.dataSource({
-  rowHasChanged: (r1, r2) => r1 !== r2
-});
+import { ListView, StyleSheet, Text, View } from "react-native";
+import Post from "./Post/index";
+import data from "./data.json";
 
 class MainApp extends Component {
-  state = {
-    dataSource: ds.cloneWithRows(data.posts)
-  };
+  constructor(props) {
+    super(props);
+    const ds = new ListView.DataSource({
+      rowHasChanged: (r1, r2) => r1 !== r2
+    });
+    this.state = {
+      dataSource: ds.cloneWithRows(data.posts)
+    };
+  }
 
   render() {
     return (
       <View style={styles.container}>
         <View style={styles.toolbar}>
-          <Text style={styles.title}>Latest Posts</Text>
+          <Text style={styles.title}>Latest posts</Text>
         </View>
         <ListView
           dataSource={this.state.dataSource}
